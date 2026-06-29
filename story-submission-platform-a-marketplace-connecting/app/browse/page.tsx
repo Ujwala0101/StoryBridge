@@ -1,0 +1,7 @@
+import { Filter, Search } from "lucide-react";
+import { StoryCard } from "@/components/story-card";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { genres, stories } from "@/data/stories";
+export const metadata = { title: "Browse Stories" };
+export default function BrowsePage() { return <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8"><div className="mb-8"><Badge>Global search</Badge><h1 className="mt-4 text-4xl font-black tracking-tight">Discover protected story pitches.</h1><p className="mt-3 max-w-2xl text-muted-foreground">Search by genre, language, format, mood, audience, and momentum signals.</p></div><Card className="mb-8 grid gap-4 p-4 md:grid-cols-[1fr_auto]"><label className="flex min-h-12 items-center gap-3 rounded-full bg-muted px-4 text-muted-foreground"><Search size={18} /><input className="w-full bg-transparent outline-none" placeholder="Search thrillers, mythology, Telugu series..." /></label><button className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground"><Filter size={16} />Filters</button></Card><div className="mb-8 flex gap-2 overflow-x-auto pb-2">{genres.slice(0, 14).map((genre) => <span key={genre} className="shrink-0 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium">{genre}</span>)}</div><div className="grid gap-6 lg:grid-cols-3">{stories.map((story) => <StoryCard key={story.id} story={story} />)}</div></div>; }

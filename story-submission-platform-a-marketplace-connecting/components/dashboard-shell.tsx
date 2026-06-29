@@ -1,0 +1,3 @@
+import { Card } from "@/components/ui/card";
+export function MetricCard({ label, value, detail }: { label: string; value: string; detail: string }) { return <Card className="p-5"><p className="text-sm text-muted-foreground">{label}</p><div className="mt-2 text-3xl font-black tracking-tight">{value}</div><p className="mt-2 text-xs text-muted-foreground">{detail}</p></Card>; }
+export function DashboardHeader({ eyebrow, title, copy }: { eyebrow: string; title: string; copy: string }) { return <div className="mb-8"><p className="text-sm font-bold uppercase tracking-wider text-primary">{eyebrow}</p><h1 className="mt-3 text-4xl font-black tracking-tight">{title}</h1><p className="mt-3 max-w-2xl text-muted-foreground">{copy}</p></div>; }

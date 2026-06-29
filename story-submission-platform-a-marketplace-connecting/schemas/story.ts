@@ -1,0 +1,3 @@
+import { z } from "zod";
+export const storySubmissionSchema = z.object({ title: z.string().min(3).max(120), genre: z.string().min(2), language: z.string().min(2), storyType: z.enum(["Feature Film", "Short Film", "Limited Series", "Web Series", "Documentary"]), logline: z.string().min(40).max(280), synopsis: z.string().min(120).max(2500), tags: z.array(z.string()).max(12).default([]), mood: z.string().min(2), audience: z.string().min(2), ageRating: z.enum(["U", "U/A 7+", "U/A 13+", "U/A 16+", "A"]), copyrightConfirmed: z.literal(true) });
+export type StorySubmissionInput = z.infer<typeof storySubmissionSchema>;

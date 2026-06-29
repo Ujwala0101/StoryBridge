@@ -1,0 +1,4 @@
+import { NextResponse, type NextRequest } from "next/server";
+const protectedPrefixes = ["/dashboard", "/messages", "/submit"];
+export function middleware(request: NextRequest) { const path = request.nextUrl.pathname; const hasSession = Boolean(request.cookies.get("sb-access-token") || request.cookies.get("storybridge-demo-session")); if (protectedPrefixes.some((prefix) => path.startsWith(prefix)) && !hasSession && process.env.NODE_ENV === "production") { const url = request.nextUrl.clone(); url.pathname = "/auth"; url.searchParams.set("next", path); return NextResponse.redirect(url); } const response = NextResponse.next(); response.headers.set("X-Frame-Options", "DENY"); response.headers.set("X-Content-Type-Options", "nosniff"); response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin"); return response; }
+export const config = { matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"] };
